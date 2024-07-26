@@ -3,14 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { BrowserRouter as Router, Route, NavLink, Routes, useNavigate, useLocation} from 'react-router-dom';
 import './home.css';
+import './user_info.js'
 
 function Home() {
+    const navigate = useNavigate();
+
+  const handleExploreClick = () => {
+    navigate('/user_info');
+  };
   return (
     <div id="home" className="home-container">
       <div className="image-wrapper">
       <h3 className="model-heading">Spider Model</h3>
       <img src="https://falkor8.com/wp-content/uploads/2024/05/download-2-1.png" className="Image-1" alt="img-1" />
-      <button className='get-started-button'>Explore</button>
+      <button className='get-started-button' onClick={handleExploreClick}>Explore</button>
       </div>
     </div>
   );
