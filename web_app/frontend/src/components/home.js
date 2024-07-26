@@ -118,7 +118,7 @@ function Examples() {
 
   return (
     <div id= "examples"className="Examples">
-      <h1 className="example-heading">Our Work</h1>
+      <h1 className="example-heading">Use cases</h1>
       <div className="flip-card-container">
         <button className="nav-button" onClick={handlePrev}>◀</button>
         {visibleCards.map((card, index) => (
