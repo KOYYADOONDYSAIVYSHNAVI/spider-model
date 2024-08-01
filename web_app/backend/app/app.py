@@ -8,11 +8,10 @@ CORS(app)
 @app.route('/')
 def home():
     return "Test"
-
-@app.route('/user-info-entry')
-def index():
-    return render_template('form.html')
-
+    
+@app.route('/user_info')
+def user_info():
+    return render_template('userinfo.html')
 
 @app.route('/submit-user', methods=['POST'])
 def submit_user():
