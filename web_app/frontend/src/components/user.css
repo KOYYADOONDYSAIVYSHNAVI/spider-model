@@ -24,7 +24,7 @@
   
   
   .container {
-    margin-top: 100px; /* Space below navbar */
+    margin-top: 100px; 
     padding: 20px;
     max-width: 600px;
     margin-left: auto;
@@ -33,7 +33,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    max-height: calc(100vh - 90px); /* Adjust based on navbar height and desired margin */
+    max-height: calc(100vh - 90px); 
   }
   
   form div {
@@ -53,7 +53,7 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 20px; /* Oval shape */
+    border-radius: 20px;
     border: 1px solid #ccc;
     text-align: center;
   }
@@ -74,7 +74,7 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 20px; /* Oval shape */
+    border-radius: 20px; 
     text-align: center;
   }
   
