@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './esg.css'
 
 const ESGPage = () => {
   const [dropdownValue, setDropdownValue] = useState('');
@@ -54,9 +55,16 @@ const ESGPage = () => {
     setFormSubmitted(true);
   };
 
-  return (
-    /*<form onSubmit={handleSubmit}>*/
-    <form method='POST' action='http://localhost:5000/submit-esg'>
+  
+return (
+    <>
+      <nav className="navbar">
+        <div className="navbar-center">
+          <h1 className="navbar-heading">ESG initiative Page</h1>
+        </div>
+      </nav>
+      <div className='container'>
+      <form onSubmit={handleSubmit}>
       <div>
         <label>Type</label>
         <select value={dropdownValue} onChange={(e) => setDropdownValue(e.target.value)} required>
@@ -126,14 +134,14 @@ const ESGPage = () => {
         ></textarea>
       </div>
 
-      <div>
+      <div className='input-file-wrapper'>
         <label>Upload relevant documents (optional)</label>
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       </div>
 
       <button type="submit">Submit</button>
     </form>
+    </div>    </>
   );
 };
-
 export default ESGPage;
