@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import './user.css'; 
 
 const UserPage = () => {
-  
   const [textField1, setTextField1] = useState('');
   const [textField2, setTextField2] = useState('');
   const [textField3, setTextField3] = useState('');
@@ -56,84 +56,86 @@ const UserPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-    
-      <div>
-      <label>Email</label>
-        <input
-          type="text"
-          value={textField1}
-          onChange={(e) => setTextField1(e.target.value)}
-          required
-        />
+    <>
+      <nav className="navbar">
+        <div className="navbar-center">
+          <h1 className="navbar-heading">User Information Page</h1>
+        </div>
+      </nav>
+      <div className='container'>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            value={textField1}
+            onChange={(e) => setTextField1(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Role</label>
+          <input
+            type="text"
+            value={textField2}
+            onChange={(e) => setTextField2(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Industry</label>
+          <input
+            type="text"
+            value={textField3}
+            onChange={(e) => setTextField3(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Company name</label>
+          <input
+            type="text"
+            value={textField4}
+            onChange={(e) => setTextField4(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Company address</label>
+          <textarea
+            value={responseField1}
+            onChange={(e) => setResponseField1(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label>Number of Employees</label>
+          <input
+            type="number"
+            step="1"
+            value={numberField}
+            onChange={(e) => setNumberField(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Goals from using this model</label>
+          <textarea
+            value={responseField2}
+            onChange={(e) => setResponseField2(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        
+          <div className='input-file-wrapper'>
+          <label>Upload relevant certificates/ company achievements (optional)</label>
+          <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        </div>
+        <button type="submit">Next</button>
+        <button type="button" onClick={() => window.history.back()}>Go Back</button>
+      </form>
       </div>
-
-      <div>
-        <label>Role</label>
-        <input
-          type="text"
-          value={textField2}
-          onChange={(e) => setTextField2(e.target.value)}
-          required
-        />
-      </div>
-
-      <div>
-      <label>Industry</label>
-        <input
-          type="text"
-          value={textField3}
-          onChange={(e) => setTextField3(e.target.value)}
-          required
-        />
-      </div>
-
-      <div>
-      <label>Company name</label>
-        <input
-          type="text"
-          value={textField4}
-          onChange={(e) => setTextField4(e.target.value)}
-          required
-        />
-      </div>
-
-      <div>
-      <label>Company address</label>
-        <textarea
-          value={responseField1}
-          onChange={(e) => setResponseField1(e.target.value)}
-          required
-        ></textarea>
-      </div>
-
-      <div>
-        <label>Number of Employees</label>
-        <input
-          type="number"
-          step="1"
-          value={numberField}
-          onChange={(e) => setNumberField(e.target.value)}
-          required
-        />
-      </div>
-
-      <div>
-        <label>Goals from using this model</label>
-        <textarea
-          value={responseField2}
-          onChange={(e) => setResponseField2(e.target.value)}
-          required
-        ></textarea>
-      </div>
-
-      <div>
-        <label>Upload relevant certificates/ company achievements (optional)</label>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      </div>
-
-      <button type="submit">Submit</button>
-    </form>
+    </>
   );
 };
 
