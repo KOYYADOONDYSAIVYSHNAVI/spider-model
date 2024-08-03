@@ -9,7 +9,7 @@ function Home() {
     const navigate = useNavigate();
 
   const handleExploreClick = () => {
-    navigate('/user_info');
+    navigate('/user-info');
   };
   return (
     <div id="home" className="home-container">
