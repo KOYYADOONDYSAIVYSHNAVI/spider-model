@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import HomePage from './components/home';
 import UserPage from './components/user_info'
 import ESGPage from './components/esg_entry'
+import ContactPage from './components/contact';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/user-info" element={<UserPage/>}/>
         <Route path="/esg-initiative" element={<ESGPage/>}/>
+        <Route path="/contact" element={<ContactPage/>}/>
       </Routes>
     </Router>
   );
