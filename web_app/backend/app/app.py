@@ -44,5 +44,15 @@ def submit_esg():
     return jsonify({'message': 'Form submitted successfully', 'data': data}), 200
 
 
+@app.route('/submit-contact', methods=['POST'])
+def submit_contact():
+    data = {
+        'name': request.form.get('name'),
+        'contact_method': request.form.get('contact_method'),
+        'website_url': request.form.get('website_url'),
+    }
+    return jsonify({'message': 'Form submitted successfully', 'data': data}), 200
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
