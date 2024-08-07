@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './contact.css'
+import { useNavigate } from 'react-router-dom';
 
 const ContactPage = () => {
     const [textField1, setTextField1] = useState('');
     const [dropdownValue, setDropdownValue, textField2, setTextField2] = useState('');
     const [textField3, setTextField3] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (formSubmitted) {
             const formData = new FormData();
@@ -42,7 +43,10 @@ const ContactPage = () => {
         e.preventDefault();
         setFormSubmitted(true);
     };
-
+    
+      const handleBackLink = () => {
+        navigate('/esg-initiative');
+      };
     return (
         <>
         <div class="navbar">
@@ -87,13 +91,14 @@ const ContactPage = () => {
             <input
                 type="text"
                 value={textField2}
-                onChange={(e) => setTextField2(e.target.value)}
+                onChange={(e) => setTextField3(e.target.value)}
                 required
             />
         </div>
 
         <div>
             <button type="submit">Submit</button>
+            <button type="button" onClick={handleBackLink}>Go Back</button>
         </div>
         </form>
         </div>
