@@ -45,11 +45,11 @@ const ContactPage = () => {
 
     return (
         <>
-        <nav className="navbar">
-            <div>
-                <h1 className="navbar-heading">Contact Page</h1>
-            </div>
-        </nav>
+        <div class="navbar">
+         <div class="navbar-center">
+          <h1 class="navbar-heading">Contact Page</h1>
+         </div>
+        </div>
         <div className="container">
         <form onSubmit={handleSubmit}>
         <div>
