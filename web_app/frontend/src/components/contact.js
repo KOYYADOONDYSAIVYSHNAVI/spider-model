@@ -3,16 +3,16 @@ import './contact.css'
 
 const ContactPage = () => {
     const [textField1, setTextField1] = useState('');
-    const [dropdownValue, setDropdownValue] = useState('');
-    const [textField2, setTextField2] = useState('');
+    const [dropdownValue, setDropdownValue, textField2, setTextField2] = useState('');
+    const [textField3, setTextField3] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     useEffect(() => {
         if (formSubmitted) {
             const formData = new FormData();
             formData.append('name', textField1);
-            formData.append('contact_method', dropdownValue);
-            formData.append('website', textField2);
+            formData.append('contact_method', dropdownValue, textField2);
+            formData.append('website', textField3);
 
             const submitData = async () => {
                 try {
@@ -70,6 +70,16 @@ const ContactPage = () => {
                 <option value="call">Call</option>
                 <option value="text">Text</option>
             </select>
+        </div>
+
+        <div>
+            <label>Contact</label>
+            <input
+                type="text"
+                value={textField2}
+                onChange={(e) => setTextField3(e.target.value)}
+                required
+            />
         </div>
 
         <div>
