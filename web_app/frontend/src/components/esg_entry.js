@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './esg.css'
+import { useNavigate } from 'react-router-dom';
 
 const ESGPage = () => {
   const [dropdownValue, setDropdownValue] = useState('');
@@ -12,6 +13,8 @@ const ESGPage = () => {
   const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     if (formSubmitted) {
       const formData = new FormData();
@@ -36,6 +39,7 @@ const ESGPage = () => {
           if (response.ok) {
             console.log('Form submitted successfully');
             setFormSubmitted(false);
+            //navigate('/contact')
           } else {
             console.error('Form submission failed');
             setFormSubmitted(false);
@@ -55,6 +59,25 @@ const ESGPage = () => {
     setFormSubmitted(true);
   };
 
+  const handleNextLink = () => {
+    if (
+      dropdownValue &&
+      textField &&
+      responseField1 &&
+      startDate &&
+      endDate &&
+      numberField &&
+      responseField2
+    ){
+    navigate('/contact');
+  }
+  else{
+    alert("Please fill in all required fields.");
+  }
+  };
+  const handleBackLink = () => {
+    navigate('/user-info');
+  };
   
 return (
     <>
@@ -139,7 +162,8 @@ return (
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" onClick={handleNextLink}>Next</button>
+      <button type="button" onClick={handleBackLink}>Go Back</button>
     </form>
     </div>    </>
   );
