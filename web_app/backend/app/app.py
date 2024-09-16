@@ -8,6 +8,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 @app.route('/')
 def home():
     return "Test"
+def index():
+    return render_template('index.html') 
 
 @app.route('/submit-user', methods=['POST'])
 def submit_user():
