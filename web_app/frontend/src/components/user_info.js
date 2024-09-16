@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './user.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const UserPage = () => {
   const [textField1, setTextField1] = useState('');
@@ -12,6 +13,7 @@ const UserPage = () => {
   const [file, setFile] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
     if (formSubmitted) {
       const formData = new FormData();
@@ -54,7 +56,26 @@ const UserPage = () => {
     e.preventDefault();
     setFormSubmitted(true);
   };
-
+  const handleNextLink = () => {
+    if (
+      textField1 &&
+      textField2 &&
+      textField3 &&
+      textField4 &&
+      responseField1 &&
+      numberField &&
+      responseField2
+    ){
+    navigate('/esg-initiative');
+  }
+  else{
+    alert("Please fill in all required fields.");
+  }
+  };
+  
+  const handleBackLink = () => {
+    navigate('/');
+  };
   return (
     <>
       <nav className="navbar">
@@ -131,8 +152,8 @@ const UserPage = () => {
           <label>Upload relevant certificates/ company achievements (optional)</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
         </div>
-        <button type="submit">Next</button>
-        <button type="button" onClick={() => window.history.back()}>Go Back</button>
+        <button type="submit" onClick={handleNextLink}>Next</button>
+        <button type="button" onClick={handleBackLink}>Go Back</button>
       </form>
       </div>
     </>
