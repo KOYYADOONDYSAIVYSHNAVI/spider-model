@@ -19,5 +19,18 @@ print("User Table Data:")
 for row in rows:
     print(row)
 
+cursor.execute("SELECT * FROM ESG_Initiative")
+rows = cursor.fetchall()
+column_names = [description[0] for description in cursor.description]
+print(column_names)
+print("ESG Initiative Data:")
+for row in rows:
+    print(row)
 
+cursor.execute("SELECT * FROM Contact")
+rows = cursor.fetchall()
+
+print("Contact Table Data:")
+for row in rows:
+    print(row)
 conn.close()

@@ -28,16 +28,19 @@ class ESGInitiative(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     type = db.Column(db.String(50))
     initiative_name = db.Column(db.String(100))
-    desired_change = db.Column(db.String(500))
     start_date = db.Column(db.String(50))
     end_date = db.Column(db.String(50))
     budget = db.Column(db.String(50))
-    concerns = db.Column(db.String(500))
+    mcq1 = db.Column(db.String(100))
+    mcq2 = db.Column(db.String(100))
+    mcq3 = db.Column(db.String(100))
+    mcq4 = db.Column(db.String(100))
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     contact_method = db.Column(db.String(100))
+    contact = db.Column(db.String(100))
     website_url = db.Column(db.String(200))
 
 
@@ -89,22 +92,26 @@ def submit_esg():
     data = {
         'type': request.form.get('type'),
         'initiative_name': request.form.get('initiative_name'),
-        'desired_change': request.form.get('desired_change'),
         'start_date': request.form.get('start_date'),
         'end_date': request.form.get('end_date'),
         'budget': request.form.get('budget'),
-        'concerns': request.form.get('concerns'),
+        'mcq1': request.form.get('mcq1'),
+        'mcq2': request.form.get('mcq2'),
+        'mcq3': request.form.get('mcq3'),
+        'mcq4': request.form.get('mcq4')
     }
 
     # Create a new ESGInitiative object
     new_esg = ESGInitiative(
         type=data['type'],
         initiative_name=data['initiative_name'],
-        desired_change=data['desired_change'],
         start_date=data['start_date'],
         end_date=data['end_date'],
         budget=data['budget'],
-        concerns=data['concerns']
+        mcq1 = data['mcq1'],
+        mcq2 = data['mcq2'],
+        mcq3 = data['mcq3'],
+        mcq4 = data['mcq4']
     )
 
     # Add the ESG initiative to the database
@@ -112,6 +119,20 @@ def submit_esg():
     db.session.commit()
 
     return jsonify({'message': 'ESG Initiative submitted successfully', 'data': data}), 200
+@app.route('/get-esg', methods=['GET'])
+def get_esg():
+    latest_initiative = ESGInitiative.query.order_by(ESGInitiative.id.desc()).first()
+    if latest_initiative:
+        result = {
+            'id': latest_initiative.id,
+            'initiative_name': latest_initiative.initiative_name,
+            'mcq1': latest_initiative.mcq1,
+            'mcq2': latest_initiative.mcq2,
+            'mcq3': latest_initiative.mcq3,
+            'mcq4': latest_initiative.mcq4
+        }
+        return jsonify(result)
+    return jsonify({'message': 'No initiatives available'}), 404
 
 @app.route('/submit-contact', methods=['POST'])
 def submit_contact():
@@ -119,6 +140,7 @@ def submit_contact():
     data = {
         'name': request.form.get('name'),
         'contact_method': request.form.get('contact_method'),
+        'contact': request.form.get('contact'),
         'website_url': request.form.get('website_url'),
     }
 
@@ -126,6 +148,7 @@ def submit_contact():
     new_contact = Contact(
         name=data['name'],
         contact_method=data['contact_method'],
+        contact = data['contact'],
         website_url=data['website_url']
     )
 
@@ -139,6 +162,7 @@ def submit_contact():
 if __name__ == '__main__':
     # Create the database tables (if they don't exist)
     with app.app_context():
+        db.drop_all()
         db.create_all()
 
     app.run(debug=True, port=5000)
