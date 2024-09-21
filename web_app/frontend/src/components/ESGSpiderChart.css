@@ -1,0 +1,22 @@
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+}
+
+
+.chart-container h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+}
+
+
+.chart-container canvas {
+    width: 50vw; 
+    height: auto;
+    max-width: 600px; 
+}

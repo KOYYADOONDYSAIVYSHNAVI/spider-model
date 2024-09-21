@@ -93,10 +93,10 @@ function Benefits(){
 
 }
 const flipCardData = [
-  { imgSrc: 'img_avatar1.png', name: 'Example 1', description: 'description 1', note: 'note 1' },
-  { imgSrc: 'img_avatar2.png', name: 'Example 2', description: 'description 2', note: 'note 2' },
-  { imgSrc: 'img_avatar3.png', name: 'Example 3', description: 'description 3', note: 'note 3' },
-  { imgSrc: 'img_avatar4.png', name: 'Example 4 ', description: 'description 4', note: 'note 4' }
+  { imgSrc: 'https://falkor8.com/wp-content/uploads/2024/05/workshop.jpg', name: 'Example 1', description: 'description 1', note: 'note 1' },
+  { imgSrc: 'https://falkor8.com/wp-content/uploads/2024/05/workshop.jpg', name: 'Example 2', description: 'description 2', note: 'note 2' },
+  { imgSrc: 'https://falkor8.com/wp-content/uploads/2024/05/workshop.jpg', name: 'Example 3', description: 'description 3', note: 'note 3' },
+  { imgSrc: 'https://falkor8.com/wp-content/uploads/2024/05/workshop.jpgmg_avatar4.png', name: 'Example 4 ', description: 'description 4', note: 'note 4' }
 ];
 
 function Examples() {
