@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'  # SQLite
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'  
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize the database
@@ -126,6 +126,10 @@ def get_esg():
         result = {
             'id': latest_initiative.id,
             'initiative_name': latest_initiative.initiative_name,
+            'type': latest_initiative.type,
+            'start_date': latest_initiative.start_date,
+            'end_date': latest_initiative.end_date,
+            'budget': latest_initiative.budget,
             'mcq1': latest_initiative.mcq1,
             'mcq2': latest_initiative.mcq2,
             'mcq3': latest_initiative.mcq3,
@@ -162,7 +166,6 @@ def submit_contact():
 if __name__ == '__main__':
     # Create the database tables (if they don't exist)
     with app.app_context():
-        db.drop_all()
         db.create_all()
 
     app.run(debug=True, port=5000)
