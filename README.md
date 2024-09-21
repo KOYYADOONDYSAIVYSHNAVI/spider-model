@@ -23,3 +23,9 @@ code .
 ### To start the application for the homepage, navigate to the `frontend` directory and run `npm start`. The application will then be available at http://localhost:3000/.
 
 ### If encountered any errors during running, try deleting the `node_modules` directory and `package-lock.json` and navigate to the `frontend` directory and run `npm install` and then re-run `npm start`.
+
+### For the backend to run simultaneously navigate to app folder in the backend and run `python app.py`
+
+### To check whether the data is getting added to the database, navigate to the instance folder and run `python checkdata.py`
+
+### Insert.py is used to add some duplicate data to the database
